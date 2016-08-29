@@ -12,7 +12,6 @@
 #import "org_cryptomator_ui_jni_MacFunctions.h"
 
 
-// Implementation of native method sayHello() of HelloJNI class
 JNIEXPORT jint JNICALL Java_org_cryptomator_ui_jni_MacFunctions_transformToForegroundApplication0(JNIEnv *env, jobject thisObj) {
 	ProcessSerialNumber psn = { 0, kCurrentProcess };
 	return TransformProcessType(&psn, kProcessTransformToForegroundApplication);
