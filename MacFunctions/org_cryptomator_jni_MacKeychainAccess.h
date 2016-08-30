@@ -4,7 +4,6 @@
 
 #ifndef _Included_org_cryptomator_jni_MacKeychainAccess
 #define _Included_org_cryptomator_jni_MacKeychainAccess
-
 /*
  * Class:     org_cryptomator_jni_MacKeychainAccess
  * Method:    storePassword0

@@ -1,24 +1,19 @@
 //
-//  org_cryptomator_ui_jni_MacFunctions.m
+//  org_cryptomator_jni_MacApplicationUiState.m
 //  MacFunctions
 //
 //  Created by Sebastian Stenzel on 29.08.16.
 //  Copyright © 2016 Cryptomator. All rights reserved.
 //
 
-#import <jni.h>
-#import <ApplicationServices/ApplicationServices.h>
-
 #import "org_cryptomator_jni_MacApplicationUiState.h"
+#import <AppKit/AppKit.h>
 
-
-JNIEXPORT jint JNICALL Java_org_cryptomator_jni_MacApplicationUiState_transformToForegroundApplication0(JNIEnv *env, jobject thisObj) {
-	ProcessSerialNumber psn = { 0, kCurrentProcess };
-	return TransformProcessType(&psn, kProcessTransformToForegroundApplication);
+JNIEXPORT jboolean JNICALL Java_org_cryptomator_jni_MacApplicationUiState_transformToForegroundApplication0(JNIEnv *env, jobject thisObj) {
+	[NSApp activateIgnoringOtherApps:YES];
+	return [NSApp setActivationPolicy:NSApplicationActivationPolicyRegular];
 }
 
-
-JNIEXPORT jint JNICALL Java_org_cryptomator_jni_MacApplicationUiState_transformToAgentApplication0(JNIEnv *env, jobject thisObj) {
-	ProcessSerialNumber psn = { 0, kCurrentProcess };
-	return TransformProcessType(&psn, kProcessTransformToUIElementApplication);
+JNIEXPORT jboolean JNICALL Java_org_cryptomator_jni_MacApplicationUiState_transformToAgentApplication0(JNIEnv *env, jobject thisObj) {
+	return [NSApp setActivationPolicy:NSApplicationActivationPolicyAccessory];
 }

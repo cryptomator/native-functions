@@ -7,15 +7,15 @@
 /*
  * Class:     org_cryptomator_jni_MacApplicationUiState
  * Method:    transformToForegroundApplication0
- * Signature: ()I
+ * Signature: ()Z
  */
-JNIEXPORT jint JNICALL Java_org_cryptomator_jni_MacApplicationUiState_transformToForegroundApplication0(JNIEnv *, jobject);
+JNIEXPORT jboolean JNICALL Java_org_cryptomator_jni_MacApplicationUiState_transformToForegroundApplication0(JNIEnv *, jobject);
 
 /*
  * Class:     org_cryptomator_jni_MacApplicationUiState
  * Method:    transformToAgentApplication0
- * Signature: ()I
+ * Signature: ()Z
  */
-JNIEXPORT jint JNICALL Java_org_cryptomator_jni_MacApplicationUiState_transformToAgentApplication0(JNIEnv *, jobject);
+JNIEXPORT jboolean JNICALL Java_org_cryptomator_jni_MacApplicationUiState_transformToAgentApplication0(JNIEnv *, jobject);
 
 #endif
