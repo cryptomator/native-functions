@@ -18,4 +18,11 @@ JNIEXPORT jint JNICALL Java_org_cryptomator_jni_MacKeychainAccess_storePassword0
  */
 JNIEXPORT jbyteArray JNICALL Java_org_cryptomator_jni_MacKeychainAccess_loadPassword0(JNIEnv *, jobject, jbyteArray);
 
+/*
+ * Class:     org_cryptomator_jni_MacKeychainAccess
+ * Method:    deletePassword0
+ * Signature: ([B)I
+ */
+JNIEXPORT jint JNICALL Java_org_cryptomator_jni_MacKeychainAccess_deletePassword0(JNIEnv *, jobject, jbyteArray);
+
 #endif

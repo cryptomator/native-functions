@@ -29,7 +29,7 @@ JNIEXPORT jint JNICALL Java_org_cryptomator_jni_MacKeychainAccess_storePassword0
 	    NULL,                // pointer to password data
 	    &itemRef             // the item reference
 	    );
-	if (status == noErr) {
+	if (status == errSecSuccess) {
 		// update existing:
 		status = SecKeychainItemModifyAttributesAndData(
 		    itemRef, // the item reference
@@ -37,7 +37,6 @@ JNIEXPORT jint JNICALL Java_org_cryptomator_jni_MacKeychainAccess_storePassword0
 		    pwLen,   // length of password
 		    pwStr    // pointer to password data
 		    );
-		return status;
 	} else if (status == errSecItemNotFound) {
 		// add new:
 		status = SecKeychainAddGenericPassword(
@@ -77,7 +76,7 @@ JNIEXPORT jbyteArray JNICALL Java_org_cryptomator_jni_MacKeychainAccess_loadPass
 	    );
 
 	jbyteArray result;
-	if (status == noErr) {
+	if (status == errSecSuccess) {
 		result = (*env)->NewByteArray(env, pwLen);
 		(*env)->SetByteArrayRegion(env, result, 0, pwLen, pwStr);
 	} else {
@@ -89,4 +88,32 @@ JNIEXPORT jbyteArray JNICALL Java_org_cryptomator_jni_MacKeychainAccess_loadPass
 		SecKeychainItemFreeContent(NULL, pwStr);
 	}
 	return result;
+}
+
+JNIEXPORT jint JNICALL Java_org_cryptomator_jni_MacKeychainAccess_deletePassword0(JNIEnv *env, jobject thisObj, jbyteArray key) {
+	const int keyLen = (*env)->GetArrayLength(env, key);
+	jbyte *keyStr = (*env)->GetByteArrayElements(env, key, NULL);
+	SecKeychainItemRef itemRef = NULL;
+	OSStatus status = SecKeychainFindGenericPassword(
+	    NULL,                // default keychain
+	    sizeof(CRYPTOMATOR), // length of service name
+	    CRYPTOMATOR,         // service name
+	    keyLen,              // length of account name
+	    (char *)keyStr,      // account name
+	    NULL,                // length of password
+	    NULL,                // pointer to password data
+	    &itemRef             // the item reference
+	    );
+
+	if (status == errSecSuccess) {
+		status = SecKeychainItemDelete(
+		    itemRef // the item reference
+		    );
+	}
+
+	(*env)->ReleaseByteArrayElements(env, key, keyStr, JNI_ABORT);
+	if (itemRef) {
+		CFRelease(itemRef);
+	}
+	return status;
 }

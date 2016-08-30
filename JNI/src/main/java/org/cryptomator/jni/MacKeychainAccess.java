@@ -53,4 +53,18 @@ public class MacKeychainAccess {
 
 	private native byte[] loadPassword0(byte[] key);
 
+	/**
+	 * Deletes the password associated with the specified key from the system keychain.
+	 * 
+	 * @param key Unique account identifier
+	 */
+	public void deletePassword(String key) {
+		int errorCode = deletePassword0(key.getBytes(UTF_8));
+		if (errorCode != 0) {
+			throw new JniException("Failed to delete password. Error code " + errorCode);
+		}
+	}
+
+	private native int deletePassword0(byte[] key);
+
 }

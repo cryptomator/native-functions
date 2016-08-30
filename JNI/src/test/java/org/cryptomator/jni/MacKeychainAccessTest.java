@@ -23,6 +23,10 @@ public class MacKeychainAccessTest {
 		char[] loadedPw = keychain.loadPassword("foo");
 
 		Assert.assertArrayEquals(storedPw.toCharArray(), loadedPw);
+
+		keychain.deletePassword("foo");
+		char[] deletedPw = keychain.loadPassword("foo");
+		Assert.assertNull(deletedPw);
 	}
 
 }
