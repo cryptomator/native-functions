@@ -7,14 +7,18 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		9E0819BF1D748EF1000C89E6 /* org_cryptomator_ui_jni_MacFunctions.h in Headers */ = {isa = PBXBuildFile; fileRef = 9E0819BE1D748EF1000C89E6 /* org_cryptomator_ui_jni_MacFunctions.h */; };
-		9E0819C11D748F32000C89E6 /* org_cryptomator_ui_jni_MacFunctions.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E0819C01D748F32000C89E6 /* org_cryptomator_ui_jni_MacFunctions.m */; };
+		9E0819C41D75CA69000C89E6 /* org_cryptomator_jni_MacApplicationUiState.h in Headers */ = {isa = PBXBuildFile; fileRef = 9E0819C21D75CA69000C89E6 /* org_cryptomator_jni_MacApplicationUiState.h */; };
+		9E0819C51D75CA69000C89E6 /* org_cryptomator_jni_MacKeychainAccess.h in Headers */ = {isa = PBXBuildFile; fileRef = 9E0819C31D75CA69000C89E6 /* org_cryptomator_jni_MacKeychainAccess.h */; };
+		9E0819C81D75CABC000C89E6 /* org_cryptomator_jni_MacApplicationUiState.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E0819C61D75CABC000C89E6 /* org_cryptomator_jni_MacApplicationUiState.m */; };
+		9E0819C91D75CABC000C89E6 /* org_cryptomator_jni_MacKeychainAccess.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E0819C71D75CABC000C89E6 /* org_cryptomator_jni_MacKeychainAccess.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		9E0819B71D748ECC000C89E6 /* libMacFunctions.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = libMacFunctions.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
-		9E0819BE1D748EF1000C89E6 /* org_cryptomator_ui_jni_MacFunctions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = org_cryptomator_ui_jni_MacFunctions.h; sourceTree = "<group>"; };
-		9E0819C01D748F32000C89E6 /* org_cryptomator_ui_jni_MacFunctions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = org_cryptomator_ui_jni_MacFunctions.m; sourceTree = "<group>"; };
+		9E0819C21D75CA69000C89E6 /* org_cryptomator_jni_MacApplicationUiState.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = org_cryptomator_jni_MacApplicationUiState.h; sourceTree = "<group>"; };
+		9E0819C31D75CA69000C89E6 /* org_cryptomator_jni_MacKeychainAccess.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = org_cryptomator_jni_MacKeychainAccess.h; sourceTree = "<group>"; };
+		9E0819C61D75CABC000C89E6 /* org_cryptomator_jni_MacApplicationUiState.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = org_cryptomator_jni_MacApplicationUiState.m; sourceTree = "<group>"; };
+		9E0819C71D75CABC000C89E6 /* org_cryptomator_jni_MacKeychainAccess.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = org_cryptomator_jni_MacKeychainAccess.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -31,8 +35,10 @@
 		9E0819AE1D748ECC000C89E6 = {
 			isa = PBXGroup;
 			children = (
-				9E0819BE1D748EF1000C89E6 /* org_cryptomator_ui_jni_MacFunctions.h */,
-				9E0819C01D748F32000C89E6 /* org_cryptomator_ui_jni_MacFunctions.m */,
+				9E0819C21D75CA69000C89E6 /* org_cryptomator_jni_MacApplicationUiState.h */,
+				9E0819C61D75CABC000C89E6 /* org_cryptomator_jni_MacApplicationUiState.m */,
+				9E0819C31D75CA69000C89E6 /* org_cryptomator_jni_MacKeychainAccess.h */,
+				9E0819C71D75CABC000C89E6 /* org_cryptomator_jni_MacKeychainAccess.m */,
 				9E0819B81D748ECC000C89E6 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -52,7 +58,8 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9E0819BF1D748EF1000C89E6 /* org_cryptomator_ui_jni_MacFunctions.h in Headers */,
+				9E0819C51D75CA69000C89E6 /* org_cryptomator_jni_MacKeychainAccess.h in Headers */,
+				9E0819C41D75CA69000C89E6 /* org_cryptomator_jni_MacApplicationUiState.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -112,7 +119,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9E0819C11D748F32000C89E6 /* org_cryptomator_ui_jni_MacFunctions.m in Sources */,
+				9E0819C91D75CABC000C89E6 /* org_cryptomator_jni_MacKeychainAccess.m in Sources */,
+				9E0819C81D75CABC000C89E6 /* org_cryptomator_jni_MacApplicationUiState.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -137,7 +145,7 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "-";
+				CODE_SIGN_IDENTITY = "";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -151,6 +159,7 @@
 					"$(inherited)",
 				);
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
 				GCC_WARN_UNDECLARED_SELECTOR = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
@@ -182,7 +191,7 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "-";
+				CODE_SIGN_IDENTITY = "";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
@@ -190,6 +199,7 @@
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
 				GCC_WARN_UNDECLARED_SELECTOR = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
@@ -241,6 +251,7 @@
 				9E0819BD1D748ECC000C89E6 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

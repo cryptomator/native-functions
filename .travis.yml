@@ -1,0 +1,24 @@
+language: java
+sudo: false
+jdk:
+- oraclejdk8
+env:
+  global:
+  - secure: "gN7mPh4iexPARgYyZypCA5ukXIMVhRBevMn3i4vUXgyXs8rnxmOp+PE/NppW0bLOlgHw7OOx8A/MB8mJ/LCRaO5H9rMXBtiQL57+3NZihUUB9d7yLIDSyA9UjzWDgRjB2MdwnsJ34P8V9MiC5VDUgI6eB2zIBMm0oGPuHBiqjvg4YpAzS9SJp+nNADSYT8fZu82HhHOZM9YQ8eW3nQd64b1mFknhXr7Xv12X8JltyNsAuAZXy563lYE7MNw79KYTO7IK1eP4gCS4ti2FGuP5AHxwQs4VMgVprAvPgq+MKyK/BdDRwaj5iCH89OwxMRMrZeEq+D7ZfRYJ6eplZy8N2wdfT+jZJcyj8R4ttCj+rdFYl2TOyiVq5M/kf5uyrJgFEDOEQ/pqsi9s0F97Gt8BDqNYU4nCsZ3frJjLEhzhN5SZjlffv/vylhudy4VHWabRenkrA2RVCpQO9eUMxbhvTEAK3PGDA/G9eQJk745uRFASaKDYOONYiEJQrQJtHjnvvzniJwThAQU1F/XF5eMYpd8CPUCUj5FRcxaBZGc9cFvVACmfNr8mtaMoimFNtNL/Bok2OHqu8NkuCOlNQsQ9+xHmglzVtnLdYPuxxVQfXkDhsB1HhnhKYDpINah19vNaXwqaUdzVpNHrs6kP3RQ+qpJwNQtpzY4d/sYl1jMX7Yk=" # MAVEN_OSSRH_USERNAME
+  - secure: "eeg/LG6klFlR0puyxqFk941cxew56jdpWhfvTYMD74Hg+vyaW6A1i+4DTlUmp3rjJIABoVh5P6Ou+0lc7VaNR3XIgI5HuO35+5R2q0cvUX0+t2LelT5W4IEOTLA75qAVG81MF1AVZrLVnNupbZgoNmNkX/pnE0suB/Po7fnQIT2y3M9qG+2svSEvZ/XnpQj8ga4BL2qf+7fnshGcV/w0Z7bbTXg0x7DBge53KpINTytu2eCYvPYMZc3KLEGqoW+8WDE3GxQujphfQwDy6P/gdcEW9jg0AOEH2F/F4buJFCpEsTmNjUGA2KJiDMXvenM1DkASNiOd02HJm+enjd85vbPAsvJRjIepW5wLnWwPV+cebsfTs2hoeggkLEUihkWrS6sLtQGKxLwVX36AuuM/FRRDqeqDbh5BIprm+f49PTbuRms5fpdowkyDVYCw3h6E119KeqPILW8yB9aSyYchDENxzmrW0pH0g7pLn1H8uzvAqYgTdtWcFUKpmkxGnoq7ad6VcxnPqD3d1rYp5M/NZ7h6Z9ANNZLjcQGvq8K43fOHi0Aba3IVIxoukarYAPIyE1BdwUquVR+bR8J6GXk/oXf6DAmUADoJOT/lEFeDJx79QudC3Q1SMqZUigpobyEdRpAUl+VOj5eMtdMODSx6BLeF3GJCNLItfFQx3QvwR9w=" # MAVEN_OSSRH_PASSWORD
+  - secure: "Wz5EkKtncoWirsWxZjw4ZxKj+08jV9QdlUCoR5yGa1hAM+C5HpaA2lZGHpzhfIqJtAbl22bymRjHczQFpEQUK6qh2YQ2mS5os5mgXCTshMUX1Z2lOjiodvdpp4t7RUhd8cVRU9hS3CyyqpZ5sVNu3uftLDjrNw+Y2b6hpGgJphJmrRWEbRl8fo9+r0nJU5nGhNYaooXj8vlE1qqMIf7mAvcizDINsmChbX5ovUrU8QoeoRp5mu21WzxAKUB8NbqUedvHGqIQiyw7N7hFFshSgaV0raleo9qYZC4K4lLQp5bx7dI7GoLTvbTy8ScF4v2VjWXGsm9dVKkeeLf8BuXX29DFCbvHXuyQl+9bpqX4f79FX6Xw+5M9w2lWDcXKd64dllB1WQFUHHsnCwi7O30LA670pf9Lv1OS2NJ/Bh/OhTcPP2U/CqhbgpjzXxrS5ME1oQx75kMjeS1NdEYTphjim+rAx3khcTy9oi1m61vs+25M49NOoTIa1yH6McmkRrqT7OtrQrwI5ceqWWQOuv5ZDWO8Izl0EY/0ypKTjRWU5C/834eLrBHFw4yCr0v7BLSRevcq0L6BEP+ETJuQapflYf8IfCOyf21L3TC0TX2+n3T6jx5395MWEBtHydpquab3SPRUoYMAxYbo7CGMRiHbrVNfsHCO3Fr5sNpb8Qbq7oU=" # MAVEN_GPG_PASSPHRASE
+script: mvn -f/JNI/pom.xml clean deploy
+before_deploy:
+- gpg --import 34C80F11.gpg
+deploy:
+- provider: script # SNAPSHOTS
+  script: mvn -fJNI/pom.xml clean deploy -DskipTests -Prelease --settings JNI/settings.xml
+  on:
+    repo: cryptomator/native-functions
+    branch: develop
+    condition: $TRAVIS_TAG = ''
+- provider: script # RELEASES
+  script: mvn -fJNI/pom.xml clean versions:set -DnewVersion=${TRAVIS_TAG} deploy -DskipTests -Prelease --settings JNI/settings.xml
+  on:
+    repo: cryptomator/native-functions
+    tags: true

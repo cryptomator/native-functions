@@ -9,16 +9,16 @@
 #import <jni.h>
 #import <ApplicationServices/ApplicationServices.h>
 
-#import "org_cryptomator_ui_jni_MacFunctions.h"
+#import "org_cryptomator_jni_MacApplicationUiState.h"
 
 
-JNIEXPORT jint JNICALL Java_org_cryptomator_ui_jni_MacFunctions_transformToForegroundApplication0(JNIEnv *env, jobject thisObj) {
+JNIEXPORT jint JNICALL Java_org_cryptomator_jni_MacApplicationUiState_transformToForegroundApplication0(JNIEnv *env, jobject thisObj) {
 	ProcessSerialNumber psn = { 0, kCurrentProcess };
 	return TransformProcessType(&psn, kProcessTransformToForegroundApplication);
 }
 
 
-JNIEXPORT jint JNICALL Java_org_cryptomator_ui_jni_MacFunctions_transformToAgentApplication0(JNIEnv *env, jobject thisObj) {
+JNIEXPORT jint JNICALL Java_org_cryptomator_jni_MacApplicationUiState_transformToAgentApplication0(JNIEnv *env, jobject thisObj) {
 	ProcessSerialNumber psn = { 0, kCurrentProcess };
 	return TransformProcessType(&psn, kProcessTransformToUIElementApplication);
 }
