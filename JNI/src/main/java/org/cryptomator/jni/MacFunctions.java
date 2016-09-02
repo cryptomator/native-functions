@@ -17,6 +17,7 @@ import org.slf4j.LoggerFactory;
 public class MacFunctions {
 
 	private static final Logger LOG = LoggerFactory.getLogger(MacFunctions.class);
+	private static final String LIB_NAME = "WinFunctions";
 
 	private final LazySingleton<MacApplicationUiState> uiState;
 	private final LazySingleton<MacKeychainAccess> keychainAccess;
@@ -32,11 +33,11 @@ public class MacFunctions {
 	static Optional<MacFunctions> loadMacFunctions() {
 		if (SystemUtils.IS_OS_MAC_OSX) {
 			try {
-				System.loadLibrary("MacFunctions");
-				LOG.info("loaded {}", System.mapLibraryName("MacFunctions"));
+				System.loadLibrary(LIB_NAME);
+				LOG.info("loaded {}", System.mapLibraryName(LIB_NAME));
 				return Optional.of(new MacFunctions());
 			} catch (UnsatisfiedLinkError e) {
-				LOG.error("Could not load JNI lib from path {}", System.getProperty("java.library.path"));
+				LOG.error("Could not load JNI lib {} from path {}", System.mapLibraryName(LIB_NAME), System.getProperty("java.library.path"));
 			}
 		}
 		return Optional.empty();

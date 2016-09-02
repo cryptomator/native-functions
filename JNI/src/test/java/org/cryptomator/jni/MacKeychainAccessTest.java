@@ -13,15 +13,14 @@ public class MacKeychainAccessTest {
 		if (!SystemUtils.IS_OS_MAC_OSX) {
 			Assert.fail();
 		}
-		System.loadLibrary("MacFunctions");
-		MacKeychainAccess keychain = new MacKeychainAccess();
+		MacKeychainAccess keychain = MacFunctions.loadMacFunctions().get().getKeychainAccess();
 
 		String storedPw = "h€llo wørld123";
 		keychain.storePassword("foo", storedPw);
 		char[] loadedPw2 = keychain.loadPassword("bar");
 		Assert.assertNull(loadedPw2);
+		
 		char[] loadedPw = keychain.loadPassword("foo");
-
 		Assert.assertArrayEquals(storedPw.toCharArray(), loadedPw);
 
 		keychain.deletePassword("foo");

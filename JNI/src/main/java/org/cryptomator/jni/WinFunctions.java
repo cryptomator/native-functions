@@ -17,6 +17,7 @@ import org.slf4j.LoggerFactory;
 public class WinFunctions {
 
 	private static final Logger LOG = LoggerFactory.getLogger(WinFunctions.class);
+	private static final String LIB_NAME = "WinFunctions";
 
 	private final LazySingleton<WinDataProtection> dataProtection;
 
@@ -30,11 +31,12 @@ public class WinFunctions {
 	static Optional<WinFunctions> loadWinFunctions() {
 		if (SystemUtils.IS_OS_WINDOWS) {
 			try {
-				System.loadLibrary("WinFunctions");
-				LOG.info("loaded {}", System.mapLibraryName("WinFunctions"));
+				System.loadLibrary(LIB_NAME);
+				LOG.info("loaded {}", System.mapLibraryName(LIB_NAME));
 				return Optional.of(new WinFunctions());
 			} catch (UnsatisfiedLinkError e) {
-				LOG.error("Could not load JNI lib from path {}", System.getProperty("java.library.path"));
+				e.printStackTrace();
+				LOG.error("Could not load JNI lib {} from path {}", System.mapLibraryName(LIB_NAME), System.getProperty("java.library.path"));
 			}
 		}
 		return Optional.empty();
