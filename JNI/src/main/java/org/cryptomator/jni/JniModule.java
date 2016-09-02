@@ -13,9 +13,14 @@ import java.util.Optional;
 public class JniModule {
 
 	private static final LazySingleton<Optional<MacFunctions>> MAC_FUNCTIONS = new LazySingleton<>(MacFunctions::loadMacFunctions);
+	private static final LazySingleton<Optional<WinFunctions>> WIN_FUNCTIONS = new LazySingleton<>(WinFunctions::loadWinFunctions);
 
 	public static Optional<MacFunctions> macFunctions() {
 		return MAC_FUNCTIONS.get();
+	}
+
+	public static Optional<WinFunctions> winFunctions() {
+		return WIN_FUNCTIONS.get();
 	}
 
 }
