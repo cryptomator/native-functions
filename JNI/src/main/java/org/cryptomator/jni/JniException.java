@@ -15,7 +15,7 @@ public class JniException extends RuntimeException {
 		return value -> {
 			try {
 				consumer.accept(value);
-			} catch (RuntimeException e) {
+			} catch (JniException e) {
 				// no-op
 			}
 		};
