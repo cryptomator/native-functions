@@ -8,6 +8,9 @@ import java.util.Arrays;
 
 public class MacKeychainAccess {
 
+	private static final int OSSTATUS_SUCCESS = 0;
+	private static final int OSSTATUS_NOT_FOUND = -25300;
+
 	MacKeychainAccess() {
 	}
 
@@ -24,7 +27,7 @@ public class MacKeychainAccess {
 		int errorCode = storePassword0(key.getBytes(UTF_8), pwBytes);
 		Arrays.fill(pwBytes, (byte) 0x00);
 		Arrays.fill(pwBuf.array(), (byte) 0x00);
-		if (errorCode != 0) {
+		if (errorCode != OSSTATUS_SUCCESS) {
 			throw new JniException("Failed to store password. Error code " + errorCode);
 		}
 	}
@@ -57,10 +60,15 @@ public class MacKeychainAccess {
 	 * Deletes the password associated with the specified key from the system keychain.
 	 * 
 	 * @param key Unique account identifier
+	 * @return <code>true</code> if the passwords has been deleted, <code>false</code> if no entry for the given key exists.
 	 */
-	public void deletePassword(String key) {
+	public boolean deletePassword(String key) {
 		int errorCode = deletePassword0(key.getBytes(UTF_8));
-		if (errorCode != 0) {
+		if (errorCode == OSSTATUS_SUCCESS) {
+			return true;
+		} else if (errorCode == OSSTATUS_NOT_FOUND) {
+			return false;
+		} else {
 			throw new JniException("Failed to delete password. Error code " + errorCode);
 		}
 	}
