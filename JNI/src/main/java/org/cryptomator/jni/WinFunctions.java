@@ -8,38 +8,19 @@
  *******************************************************************************/
 package org.cryptomator.jni;
 
-import java.util.Optional;
+import javax.inject.Inject;
 
-import org.apache.commons.lang3.SystemUtils;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import dagger.Lazy;
 
 public class WinFunctions {
 
-	private static final Logger LOG = LoggerFactory.getLogger(WinFunctions.class);
-	private static final String LIB_NAME = "WinFunctions";
+	static final String LIB_NAME = "WinFunctions";
 
-	private final LazySingleton<WinDataProtection> dataProtection;
+	private final Lazy<WinDataProtection> dataProtection;
 
-	private WinFunctions() {
-		this.dataProtection = new LazySingleton<>(WinDataProtection::new);
-	}
-
-	/**
-	 * @return WinFunctions or empty optional if the native bindings could not be loaded for any reason.
-	 */
-	static Optional<WinFunctions> loadWinFunctions() {
-		if (SystemUtils.IS_OS_WINDOWS) {
-			try {
-				System.loadLibrary(LIB_NAME);
-				LOG.info("loaded {}", System.mapLibraryName(LIB_NAME));
-				return Optional.of(new WinFunctions());
-			} catch (UnsatisfiedLinkError e) {
-				e.printStackTrace();
-				LOG.error("Could not load JNI lib {} from path {}", System.mapLibraryName(LIB_NAME), System.getProperty("java.library.path"));
-			}
-		}
-		return Optional.empty();
+	@Inject
+	WinFunctions(Lazy<WinDataProtection> dataProtection) {
+		this.dataProtection = dataProtection;
 	}
 
 	public WinDataProtection dataProtection() {

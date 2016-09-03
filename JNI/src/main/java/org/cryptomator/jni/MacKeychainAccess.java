@@ -14,11 +14,14 @@ import java.nio.ByteBuffer;
 import java.nio.CharBuffer;
 import java.util.Arrays;
 
+import javax.inject.Inject;
+
 public class MacKeychainAccess {
 
 	private static final int OSSTATUS_SUCCESS = 0;
 	private static final int OSSTATUS_NOT_FOUND = -25300;
 
+	@Inject
 	MacKeychainAccess() {
 	}
 

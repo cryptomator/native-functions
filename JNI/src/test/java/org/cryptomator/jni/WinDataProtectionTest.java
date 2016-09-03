@@ -21,7 +21,7 @@ public class WinDataProtectionTest {
 		if (!SystemUtils.IS_OS_WINDOWS) {
 			Assert.fail();
 		}
-		WinDataProtection dataProtection = WinFunctions.loadWinFunctions().get().dataProtection();
+		WinDataProtection dataProtection = DaggerJniTestComponent.create().winFunctions().get().dataProtection();
 
 		String storedPw = "h€llo wørld123";
 		byte[] ciphertext = dataProtection.protect(storedPw.getBytes(), "salt".getBytes());

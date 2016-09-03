@@ -21,13 +21,13 @@ public class MacKeychainAccessTest {
 		if (!SystemUtils.IS_OS_MAC_OSX) {
 			Assert.fail();
 		}
-		MacKeychainAccess keychain = MacFunctions.loadMacFunctions().get().keychainAccess();
+		MacKeychainAccess keychain = DaggerJniTestComponent.create().macFunctions().get().keychainAccess();
 
 		String storedPw = "h€llo wørld123";
 		keychain.storePassword("foo", storedPw);
 		char[] loadedPw2 = keychain.loadPassword("bar");
 		Assert.assertNull(loadedPw2);
-		
+
 		char[] loadedPw = keychain.loadPassword("foo");
 		Assert.assertArrayEquals(storedPw.toCharArray(), loadedPw);
 

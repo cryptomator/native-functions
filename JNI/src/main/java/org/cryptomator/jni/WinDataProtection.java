@@ -8,8 +8,11 @@
  *******************************************************************************/
 package org.cryptomator.jni;
 
+import javax.inject.Inject;
+
 public class WinDataProtection {
 
+	@Inject
 	WinDataProtection() {
 	}
 
