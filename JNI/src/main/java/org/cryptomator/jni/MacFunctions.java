@@ -47,7 +47,7 @@ public class MacFunctions {
 		return uiState.get();
 	}
 
-	public MacKeychainAccess getKeychainAccess() {
+	public MacKeychainAccess keychainAccess() {
 		return keychainAccess.get();
 	}
 

@@ -21,7 +21,7 @@ public class MacKeychainAccessTest {
 		if (!SystemUtils.IS_OS_MAC_OSX) {
 			Assert.fail();
 		}
-		MacKeychainAccess keychain = MacFunctions.loadMacFunctions().get().getKeychainAccess();
+		MacKeychainAccess keychain = MacFunctions.loadMacFunctions().get().keychainAccess();
 
 		String storedPw = "h€llo wørld123";
 		keychain.storePassword("foo", storedPw);
