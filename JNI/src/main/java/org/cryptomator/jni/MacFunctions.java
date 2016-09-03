@@ -14,7 +14,7 @@ import dagger.Lazy;
 
 public class MacFunctions {
 
-	static final String LIB_NAME = "WinFunctions";
+	static final String LIB_NAME = "MacFunctions";
 
 	private final Lazy<MacApplicationUiState> uiState;
 	private final Lazy<MacKeychainAccess> keychainAccess;
