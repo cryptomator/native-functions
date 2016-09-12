@@ -1,0 +1,259 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		9E0819C41D75CA69000C89E6 /* org_cryptomator_jni_MacApplicationUiState.h in Headers */ = {isa = PBXBuildFile; fileRef = 9E0819C21D75CA69000C89E6 /* org_cryptomator_jni_MacApplicationUiState.h */; };
+		9E0819C51D75CA69000C89E6 /* org_cryptomator_jni_MacKeychainAccess.h in Headers */ = {isa = PBXBuildFile; fileRef = 9E0819C31D75CA69000C89E6 /* org_cryptomator_jni_MacKeychainAccess.h */; };
+		9E0819C81D75CABC000C89E6 /* org_cryptomator_jni_MacApplicationUiState.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E0819C61D75CABC000C89E6 /* org_cryptomator_jni_MacApplicationUiState.m */; };
+		9E0819C91D75CABC000C89E6 /* org_cryptomator_jni_MacKeychainAccess.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E0819C71D75CABC000C89E6 /* org_cryptomator_jni_MacKeychainAccess.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		9E0819B71D748ECC000C89E6 /* libMacFunctions.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = libMacFunctions.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
+		9E0819C21D75CA69000C89E6 /* org_cryptomator_jni_MacApplicationUiState.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = org_cryptomator_jni_MacApplicationUiState.h; sourceTree = "<group>"; };
+		9E0819C31D75CA69000C89E6 /* org_cryptomator_jni_MacKeychainAccess.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = org_cryptomator_jni_MacKeychainAccess.h; sourceTree = "<group>"; };
+		9E0819C61D75CABC000C89E6 /* org_cryptomator_jni_MacApplicationUiState.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = org_cryptomator_jni_MacApplicationUiState.m; sourceTree = "<group>"; };
+		9E0819C71D75CABC000C89E6 /* org_cryptomator_jni_MacKeychainAccess.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = org_cryptomator_jni_MacKeychainAccess.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		9E0819B41D748ECC000C89E6 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		9E0819AE1D748ECC000C89E6 = {
+			isa = PBXGroup;
+			children = (
+				9E0819C21D75CA69000C89E6 /* org_cryptomator_jni_MacApplicationUiState.h */,
+				9E0819C61D75CABC000C89E6 /* org_cryptomator_jni_MacApplicationUiState.m */,
+				9E0819C31D75CA69000C89E6 /* org_cryptomator_jni_MacKeychainAccess.h */,
+				9E0819C71D75CABC000C89E6 /* org_cryptomator_jni_MacKeychainAccess.m */,
+				9E0819B81D748ECC000C89E6 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		9E0819B81D748ECC000C89E6 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				9E0819B71D748ECC000C89E6 /* libMacFunctions.dylib */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		9E0819B51D748ECC000C89E6 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9E0819C51D75CA69000C89E6 /* org_cryptomator_jni_MacKeychainAccess.h in Headers */,
+				9E0819C41D75CA69000C89E6 /* org_cryptomator_jni_MacApplicationUiState.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		9E0819B61D748ECC000C89E6 /* MacFunctions */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 9E0819BB1D748ECC000C89E6 /* Build configuration list for PBXNativeTarget "MacFunctions" */;
+			buildPhases = (
+				9E0819B31D748ECC000C89E6 /* Sources */,
+				9E0819B41D748ECC000C89E6 /* Frameworks */,
+				9E0819B51D748ECC000C89E6 /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = MacFunctions;
+			productName = MacFunctions;
+			productReference = 9E0819B71D748ECC000C89E6 /* libMacFunctions.dylib */;
+			productType = "com.apple.product-type.library.dynamic";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		9E0819AF1D748ECC000C89E6 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0730;
+				ORGANIZATIONNAME = Cryptomator;
+				TargetAttributes = {
+					9E0819B61D748ECC000C89E6 = {
+						CreatedOnToolsVersion = 7.3.1;
+					};
+				};
+			};
+			buildConfigurationList = 9E0819B21D748ECC000C89E6 /* Build configuration list for PBXProject "MacFunctions" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 9E0819AE1D748ECC000C89E6;
+			productRefGroup = 9E0819B81D748ECC000C89E6 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				9E0819B61D748ECC000C89E6 /* MacFunctions */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXSourcesBuildPhase section */
+		9E0819B31D748ECC000C89E6 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9E0819C91D75CABC000C89E6 /* org_cryptomator_jni_MacKeychainAccess.m in Sources */,
+				9E0819C81D75CABC000C89E6 /* org_cryptomator_jni_MacApplicationUiState.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		9E0819B91D748ECC000C89E6 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = "/Library/Java/JavaVirtualMachines/jdk1.8.0_102.jdk/Contents/Home/include/**";
+				MACOSX_DEPLOYMENT_TARGET = 10.11;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		9E0819BA1D748ECC000C89E6 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = "/Library/Java/JavaVirtualMachines/jdk1.8.0_102.jdk/Contents/Home/include/**";
+				MACOSX_DEPLOYMENT_TARGET = 10.11;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		9E0819BC1D748ECC000C89E6 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				EXECUTABLE_PREFIX = lib;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		9E0819BD1D748ECC000C89E6 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				EXECUTABLE_PREFIX = lib;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		9E0819B21D748ECC000C89E6 /* Build configuration list for PBXProject "MacFunctions" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				9E0819B91D748ECC000C89E6 /* Debug */,
+				9E0819BA1D748ECC000C89E6 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		9E0819BB1D748ECC000C89E6 /* Build configuration list for PBXNativeTarget "MacFunctions" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				9E0819BC1D748ECC000C89E6 /* Debug */,
+				9E0819BD1D748ECC000C89E6 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 9E0819AF1D748ECC000C89E6 /* Project object */;
+}
