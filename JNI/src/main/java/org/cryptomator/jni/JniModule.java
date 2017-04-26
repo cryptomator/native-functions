@@ -49,7 +49,6 @@ public class JniModule {
 				LOG.info("loaded {}", System.mapLibraryName(WinFunctions.LIB_NAME));
 				return Optional.of(winFunction.get());
 			} catch (UnsatisfiedLinkError e) {
-				e.printStackTrace();
 				LOG.error("Could not load JNI lib {} from path {}", System.mapLibraryName(WinFunctions.LIB_NAME), System.getProperty("java.library.path"));
 			}
 		}
