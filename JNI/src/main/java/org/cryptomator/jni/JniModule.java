@@ -21,7 +21,7 @@ import dagger.Module;
 import dagger.Provides;
 
 @Module
-public class JniModule {
+class JniModule {
 
 	private static final Logger LOG = LoggerFactory.getLogger(JniModule.class);
 
