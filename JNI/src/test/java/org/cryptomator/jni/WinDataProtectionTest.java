@@ -8,7 +8,6 @@
  *******************************************************************************/
 package org.cryptomator.jni;
 
-import org.apache.commons.lang3.SystemUtils;
 import org.junit.Assert;
 import org.junit.Ignore;
 import org.junit.Test;
@@ -18,10 +17,10 @@ public class WinDataProtectionTest {
 	@Ignore
 	@Test
 	public void testDataProtection() {
-		if (!SystemUtils.IS_OS_WINDOWS) {
+		if (!System.getProperty("os.name").startsWith("Windows")) {
 			Assert.fail();
 		}
-		WinDataProtection dataProtection = DaggerJniTestComponent.create().winFunctions().get().dataProtection();
+		WinDataProtection dataProtection = JniFunctions.winFunctions().get().dataProtection();
 
 		String storedPw = "h€llo wørld123";
 		byte[] ciphertext = dataProtection.protect(storedPw.getBytes(), "salt".getBytes());

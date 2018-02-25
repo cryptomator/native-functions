@@ -8,7 +8,6 @@
  *******************************************************************************/
 package org.cryptomator.jni;
 
-import org.apache.commons.lang3.SystemUtils;
 import org.junit.Assert;
 import org.junit.Ignore;
 import org.junit.Test;
@@ -18,10 +17,10 @@ public class MacKeychainAccessTest {
 	@Ignore
 	@Test
 	public void testKeychainAccess() {
-		if (!SystemUtils.IS_OS_MAC_OSX) {
+		if (!System.getProperty("os.name").startsWith("Mac OS X")) {
 			Assert.fail();
 		}
-		MacKeychainAccess keychain = DaggerJniTestComponent.create().macFunctions().get().keychainAccess();
+		MacKeychainAccess keychain = JniFunctions.macFunctions().get().keychainAccess();
 
 		String storedPw = "h€llo wørld123";
 		keychain.storePassword("foo", storedPw);

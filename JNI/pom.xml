@@ -15,10 +15,7 @@
 	</scm>
 	
 	<properties>
-		<java.version>9</java.version>
-		<commons.lang.version>3.7</commons.lang.version>
-		<dagger.version>2.14.1</dagger.version>
-		<slf4j.version>1.7.25</slf4j.version>
+		<slf4j.version>1.8.0-beta1</slf4j.version>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 	</properties>
 
@@ -41,30 +38,11 @@
 	</developers>
 
 	<dependencies>
-		<dependency>
-			<groupId>org.apache.commons</groupId>
-			<artifactId>commons-lang3</artifactId>
-			<version>${commons.lang.version}</version>
-		</dependency>
-
 		<!-- Logging -->
 		<dependency>
 			<groupId>org.slf4j</groupId>
 			<artifactId>slf4j-api</artifactId>
 			<version>${slf4j.version}</version>
-		</dependency>
-		
-		<!-- DI -->
-		<dependency>
-			<groupId>com.google.dagger</groupId>
-			<artifactId>dagger</artifactId>
-			<version>${dagger.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>com.google.dagger</groupId>
-			<artifactId>dagger-compiler</artifactId>
-			<version>${dagger.version}</version>
-			<optional>true</optional>
 		</dependency>
 
 		<!-- Test -->
@@ -88,9 +66,9 @@
 				<artifactId>maven-compiler-plugin</artifactId>
 				<version>3.7.0</version>
 				<configuration>
-					<source>${java.version}</source>
-					<target>${java.version}</target>
-					<release>${java.version}</release>
+					<source>9</source>
+					<target>9</target>
+					<release>9</release>
 					<encoding>UTF-8</encoding>
 					<showWarnings>true</showWarnings>
 				</configuration>
