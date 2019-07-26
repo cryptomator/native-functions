@@ -15,14 +15,7 @@ cache:
   directories:
   - $HOME/.m2
 deploy:
-- provider: script # SNAPSHOTS
-  script: mvn -fJNI/pom.xml clean deploy -DskipTests -Prelease
-  skip_cleanup: true
-  on:
-    repo: cryptomator/native-functions
-    branch: develop
-    condition: $TRAVIS_TAG = ''
-- provider: script # RELEASES
+- provider: script
   script: mvn -fJNI/pom.xml clean versions:set -DnewVersion=${TRAVIS_TAG} deploy -DskipTests -Prelease
   skip_cleanup: true
   on:
