@@ -8,16 +8,23 @@
  *******************************************************************************/
 package org.cryptomator.jni;
 
+import javax.inject.Inject;
+
+import dagger.Lazy;
+
 public class WinFunctions {
 
 	static final String LIB_NAME = "WinFunctions";
 
-	private final WinDataProtection dataProtection = new WinDataProtection();
+	private final Lazy<WinDataProtection> dataProtection;
 
-	WinFunctions(){}
+	@Inject
+	WinFunctions(Lazy<WinDataProtection> dataProtection) {
+		this.dataProtection = dataProtection;
+	}
 
 	public WinDataProtection dataProtection() {
-		return dataProtection;
+		return dataProtection.get();
 	}
 
 }

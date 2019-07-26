@@ -8,22 +8,29 @@
  *******************************************************************************/
 package org.cryptomator.jni;
 
+import javax.inject.Inject;
+
+import dagger.Lazy;
+
 public class MacFunctions {
 
 	static final String LIB_NAME = "MacFunctions";
 
-	private final MacApplicationUiState uiState = new MacApplicationUiState();
-	private final MacKeychainAccess keychainAccess = new MacKeychainAccess();
+	private final Lazy<MacApplicationUiState> uiState;
+	private final Lazy<MacKeychainAccess> keychainAccess;
 
-	MacFunctions() {
+	@Inject
+	MacFunctions(Lazy<MacApplicationUiState> uiState, Lazy<MacKeychainAccess> keychainAccess) {
+		this.uiState = uiState;
+		this.keychainAccess = keychainAccess;
 	}
 
 	public MacApplicationUiState uiState() {
-		return uiState;
+		return uiState.get();
 	}
 
 	public MacKeychainAccess keychainAccess() {
-		return keychainAccess;
+		return keychainAccess.get();
 	}
 
 }

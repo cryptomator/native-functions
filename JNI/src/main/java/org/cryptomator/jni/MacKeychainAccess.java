@@ -8,16 +8,22 @@
  *******************************************************************************/
 package org.cryptomator.jni;
 
+import static java.nio.charset.StandardCharsets.UTF_8;
+
 import java.nio.ByteBuffer;
 import java.nio.CharBuffer;
 import java.util.Arrays;
 
-import static java.nio.charset.StandardCharsets.UTF_8;
+import javax.inject.Inject;
 
 public class MacKeychainAccess {
 
 	private static final int OSSTATUS_SUCCESS = 0;
 	private static final int OSSTATUS_NOT_FOUND = -25300;
+
+	@Inject
+	MacKeychainAccess() {
+	}
 
 	/**
 	 * Associates the specified password with the specified key in the system keychain.

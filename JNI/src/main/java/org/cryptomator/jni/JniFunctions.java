@@ -4,14 +4,14 @@ import java.util.Optional;
 
 public class JniFunctions {
 
-	private static final FunctionsLoader LOADER = new FunctionsLoader();
+	private static final JniComponent COMP = DaggerJniComponent.create();
 
 	public static Optional<MacFunctions> macFunctions() {
-		return LOADER.macFunctions();
+		return COMP.macFunctions();
 	}
 
 	public static Optional<WinFunctions> winFunctions() {
-		return LOADER.winFunctions();
+		return COMP.winFunctions();
 	}
 
 }

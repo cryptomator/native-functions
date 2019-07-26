@@ -8,7 +8,13 @@
  *******************************************************************************/
 package org.cryptomator.jni;
 
+import javax.inject.Inject;
+
 public class MacApplicationUiState {
+
+	@Inject
+	MacApplicationUiState() {
+	}
 
 	/**
 	 * Makes the current application a foreground application, which appears in the Dock and the Application Switcher.

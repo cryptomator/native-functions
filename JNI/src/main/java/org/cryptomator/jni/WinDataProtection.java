@@ -8,7 +8,13 @@
  *******************************************************************************/
 package org.cryptomator.jni;
 
+import javax.inject.Inject;
+
 public class WinDataProtection {
+
+	@Inject
+	WinDataProtection() {
+	}
 
 	/**
 	 * Encrypts the given cleartext using a key provided by Windows for the currently logged-in user.

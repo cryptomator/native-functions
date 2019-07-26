@@ -9,30 +9,30 @@
 package org.cryptomator.jni;
 
 import java.util.Optional;
-import java.util.concurrent.atomic.AtomicReference;
-import java.util.function.Supplier;
-import java.util.function.UnaryOperator;
 
+import javax.inject.Singleton;
+
+import org.apache.commons.lang3.SystemUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-class FunctionsLoader {
+import dagger.Lazy;
+import dagger.Module;
+import dagger.Provides;
 
-	private static final Logger LOG = LoggerFactory.getLogger(FunctionsLoader.class);
-	private static final String OS_NAME = System.getProperty("os.name");
-	private static final String OS_NAME_PREFIX_OSX = "Mac OS X";
-	private static final String OS_NAME_PREFIX_WIN = "Windows";
+@Module
+class JniModule {
 
-	private final AtomicReference<MacFunctions> macFunctions = new AtomicReference<>();
-	private final AtomicReference<WinFunctions> winFunctions = new AtomicReference<>();
+	private static final Logger LOG = LoggerFactory.getLogger(JniModule.class);
 
-	public Optional<MacFunctions> macFunctions() {
-		if (OS_NAME.startsWith(OS_NAME_PREFIX_OSX)) {
+	@Provides
+	@Singleton
+	public Optional<MacFunctions> macFunctions(Lazy<MacFunctions> macFunctions) {
+		if (SystemUtils.IS_OS_MAC_OSX) {
 			try {
 				System.loadLibrary(MacFunctions.LIB_NAME);
 				LOG.info("loaded {}", System.mapLibraryName(MacFunctions.LIB_NAME));
-				MacFunctions fn = macFunctions.updateAndGet(setIfNull(MacFunctions::new));
-				return Optional.of(fn);
+				return Optional.of(macFunctions.get());
 			} catch (UnsatisfiedLinkError e) {
 				LOG.error("Could not load JNI lib {} from path {}", System.mapLibraryName(MacFunctions.LIB_NAME), System.getProperty("java.library.path"));
 			}
@@ -40,24 +40,19 @@ class FunctionsLoader {
 		return Optional.empty();
 	}
 
-	public Optional<WinFunctions> winFunctions() {
-		if (OS_NAME.startsWith(OS_NAME_PREFIX_WIN)) {
+	@Provides
+	@Singleton
+	public Optional<WinFunctions> winFunctions(Lazy<WinFunctions> winFunction) {
+		if (SystemUtils.IS_OS_WINDOWS) {
 			try {
 				System.loadLibrary(WinFunctions.LIB_NAME);
 				LOG.info("loaded {}", System.mapLibraryName(WinFunctions.LIB_NAME));
-				WinFunctions fn = winFunctions.updateAndGet(setIfNull(WinFunctions::new));
-				return Optional.of(fn);
+				return Optional.of(winFunction.get());
 			} catch (UnsatisfiedLinkError e) {
 				LOG.error("Could not load JNI lib {} from path {}", System.mapLibraryName(WinFunctions.LIB_NAME), System.getProperty("java.library.path"));
 			}
 		}
 		return Optional.empty();
-	}
-
-	private static <V> UnaryOperator<V> setIfNull(Supplier<V> supplier) {
-		return v -> {
-			return v == null ? supplier.get() : v;
-		};
 	}
 
 }
