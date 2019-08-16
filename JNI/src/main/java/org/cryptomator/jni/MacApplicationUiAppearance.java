@@ -8,13 +8,7 @@
  *******************************************************************************/
 package org.cryptomator.jni;
 
-import javax.inject.Inject;
-
 public class MacApplicationUiAppearance {
-
-	@Inject
-	MacApplicationUiAppearance() {
-	}
 
 	/**
 	 * Gets the current interface style based on AppleInterfaceStyle in NSGlobalDomain.
