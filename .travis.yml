@@ -23,7 +23,7 @@ jobs:
       language: cpp
       install:
         - choco install openjdk --version 11.0.2.01
-        - choco install maven --version 3.6.1
+        - choco install maven --version 3.6.1 --ignore-dependencies
       script:
         - mvn -fJNI/pom.xml clean install -Dorg.slf4j.simpleLogger.log.org.apache.maven.cli.transfer.Slf4jMavenTransferListener=WARN
 #    - stage: foo
