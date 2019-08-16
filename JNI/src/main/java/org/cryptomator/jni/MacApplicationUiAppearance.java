@@ -17,6 +17,25 @@ public class MacApplicationUiAppearance {
 	}
 
 	/**
+	 * Gets the current interface style based on AppleInterfaceStyle in NSGlobalDomain.
+	 *
+	 * @return current {@link MacApplicationUiInterfaceStyle}
+	 */
+	public MacApplicationUiInterfaceStyle getCurrentInterfaceStyle() {
+		String currentAppearanceName = getCurrentInterfaceStyle0();
+		if (currentAppearanceName.equals("Light")) {
+			return MacApplicationUiInterfaceStyle.LIGHT;
+		} else if (currentAppearanceName.equals("Dark")) {
+			return MacApplicationUiInterfaceStyle.DARK;
+		} else {
+			// unknown interface style, defaults to light
+			return MacApplicationUiInterfaceStyle.LIGHT;
+		}
+	}
+
+	private native String getCurrentInterfaceStyle0();
+
+	/**
 	 * Sets the current appearance to aqua (light mode).
 	 */
 	public void setToAqua() {
@@ -35,5 +54,16 @@ public class MacApplicationUiAppearance {
 	}
 
 	private native boolean setToDarkAqua0();
+
+	/**
+	 * Adds a {@link MacApplicationUiInterfaceThemeListener} which will be notified whenever the interface theme has changed.
+	 *
+	 * @param listener The listener to register
+	 */
+	public void addListener(MacApplicationUiInterfaceThemeListener listener) {
+		addListener0(listener);
+	}
+
+	private native void addListener0(MacApplicationUiInterfaceThemeListener listener);
 
 }

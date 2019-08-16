@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		74A247B42306FDB900BFA9FC /* SKYAppearanceNotifier.h in Headers */ = {isa = PBXBuildFile; fileRef = 74A247B22306FDB900BFA9FC /* SKYAppearanceNotifier.h */; };
+		74A247B52306FDB900BFA9FC /* SKYAppearanceNotifier.m in Sources */ = {isa = PBXBuildFile; fileRef = 74A247B32306FDB900BFA9FC /* SKYAppearanceNotifier.m */; };
+		74A247BC2306FE5C00BFA9FC /* SKYAppearanceObserver.h in Headers */ = {isa = PBXBuildFile; fileRef = 74A247BA2306FE5C00BFA9FC /* SKYAppearanceObserver.h */; };
+		74A247BD2306FE5C00BFA9FC /* SKYAppearanceObserver.m in Sources */ = {isa = PBXBuildFile; fileRef = 74A247BB2306FE5C00BFA9FC /* SKYAppearanceObserver.m */; };
 		74DA953222E9D94800D7D8CA /* org_cryptomator_jni_MacApplicationUiAppearance.h in Headers */ = {isa = PBXBuildFile; fileRef = 74DA953122E9D94700D7D8CA /* org_cryptomator_jni_MacApplicationUiAppearance.h */; };
 		74DA953422E9DA1000D7D8CA /* org_cryptomator_jni_MacApplicationUiAppearance.m in Sources */ = {isa = PBXBuildFile; fileRef = 74DA953322E9DA0F00D7D8CA /* org_cryptomator_jni_MacApplicationUiAppearance.m */; };
 		9E0819C41D75CA69000C89E6 /* org_cryptomator_jni_MacApplicationUiState.h in Headers */ = {isa = PBXBuildFile; fileRef = 9E0819C21D75CA69000C89E6 /* org_cryptomator_jni_MacApplicationUiState.h */; };
@@ -16,6 +20,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		74A247B22306FDB900BFA9FC /* SKYAppearanceNotifier.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SKYAppearanceNotifier.h; sourceTree = "<group>"; };
+		74A247B32306FDB900BFA9FC /* SKYAppearanceNotifier.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SKYAppearanceNotifier.m; sourceTree = "<group>"; };
+		74A247BA2306FE5C00BFA9FC /* SKYAppearanceObserver.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SKYAppearanceObserver.h; sourceTree = "<group>"; };
+		74A247BB2306FE5C00BFA9FC /* SKYAppearanceObserver.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SKYAppearanceObserver.m; sourceTree = "<group>"; };
 		74DA953122E9D94700D7D8CA /* org_cryptomator_jni_MacApplicationUiAppearance.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = org_cryptomator_jni_MacApplicationUiAppearance.h; sourceTree = "<group>"; };
 		74DA953322E9DA0F00D7D8CA /* org_cryptomator_jni_MacApplicationUiAppearance.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = org_cryptomator_jni_MacApplicationUiAppearance.m; sourceTree = "<group>"; };
 		9E0819B71D748ECC000C89E6 /* libMacFunctions.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = libMacFunctions.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -45,6 +53,10 @@
 				9E0819C61D75CABC000C89E6 /* org_cryptomator_jni_MacApplicationUiState.m */,
 				9E0819C31D75CA69000C89E6 /* org_cryptomator_jni_MacKeychainAccess.h */,
 				9E0819C71D75CABC000C89E6 /* org_cryptomator_jni_MacKeychainAccess.m */,
+				74A247B22306FDB900BFA9FC /* SKYAppearanceNotifier.h */,
+				74A247B32306FDB900BFA9FC /* SKYAppearanceNotifier.m */,
+				74A247BA2306FE5C00BFA9FC /* SKYAppearanceObserver.h */,
+				74A247BB2306FE5C00BFA9FC /* SKYAppearanceObserver.m */,
 				9E0819B81D748ECC000C89E6 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -64,6 +76,8 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				74A247B42306FDB900BFA9FC /* SKYAppearanceNotifier.h in Headers */,
+				74A247BC2306FE5C00BFA9FC /* SKYAppearanceObserver.h in Headers */,
 				74DA953222E9D94800D7D8CA /* org_cryptomator_jni_MacApplicationUiAppearance.h in Headers */,
 				9E0819C51D75CA69000C89E6 /* org_cryptomator_jni_MacKeychainAccess.h in Headers */,
 				9E0819C41D75CA69000C89E6 /* org_cryptomator_jni_MacApplicationUiState.h in Headers */,
@@ -128,6 +142,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				9E0819C91D75CABC000C89E6 /* org_cryptomator_jni_MacKeychainAccess.m in Sources */,
+				74A247BD2306FE5C00BFA9FC /* SKYAppearanceObserver.m in Sources */,
+				74A247B52306FDB900BFA9FC /* SKYAppearanceNotifier.m in Sources */,
 				74DA953422E9DA1000D7D8CA /* org_cryptomator_jni_MacApplicationUiAppearance.m in Sources */,
 				9E0819C81D75CABC000C89E6 /* org_cryptomator_jni_MacApplicationUiState.m in Sources */,
 			);
