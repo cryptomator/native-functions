@@ -273,7 +273,6 @@
 										<JAVA_HOME>${java.home}</JAVA_HOME>
 									</environmentVariables>
 									<arguments>
-										<argument>clean</argument>
 										<argument>install</argument>
 									</arguments>
 								</configuration>
