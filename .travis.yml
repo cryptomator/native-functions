@@ -1,10 +1,3 @@
-language: java
-
-install:
-- curl -o $HOME/.m2/settings.xml https://gist.githubusercontent.com/cryptobot/cf5fbd909c4782aaeeeb7c7f4a1a43da/raw/e60ee486e34ee0c79f89f947abe2c83b4290c6bb/settings.xml
-- mvn -fJNI/pom.xml dependency:go-offline -Prelease
-script:
-- mvn -fJNI/pom.xml clean install
 cache:
   directories:
   - $HOME/.m2
@@ -22,6 +15,16 @@ jobs:
       name: "macOS"
       os: osx
       osx_image: xcode10.1
+      script:
+        - mvn -fJNI/pom.xml clean install -Dorg.slf4j.simpleLogger.log.org.apache.maven.cli.transfer.Slf4jMavenTransferListener=WARN
+    - stage: test
+      name: "Windows"
+      os: windows
+      language: cpp
+      install:
+        - choco install openjdk --version 11.0.2.01
+      script:
+        - mvn -fJNI/pom.xml clean install -Dorg.slf4j.simpleLogger.log.org.apache.maven.cli.transfer.Slf4jMavenTransferListener=WARN
 #    - stage: foo
 #      name: "Foo"
 #      script: echo "foo"
@@ -29,12 +32,15 @@ jobs:
       name: "Deploy"
       os: linux
       dist: xenial
+      language: java
       jdk: openjdk11
       sudo: false
       if: tag IS present
       env:
         global:
         - secure: "bSndg671YCDiXKKVf0pLw46ZX8wlyU1eD/CuSLtPu6yFPumG8Mi0oKckh+ZyojZbGvvCFGzgdaVIwKUysGl5y4ZHlv79pAcgQU5f0610SbTL5haxwKSu2PZORU2yHpjVSx9TcGCipygHRW/uQAzctmYMR/fzHVfCivfECpQh3Ism5WQpSVDOjhxh2wN8NSVYhjtJ9c1m6YQPR3JL6kDvh5un26T/DlHRGIVjz26bZVWZlnBxF13BFYhqrY+uq6C4Cx40NpjGwTboCp/wAvvqMTznnYSES6K+B5iRXwSTyY6UVfWtZz8YGdfMrWPuHuC+Odb818dClGyzLKIzGoC+CyHv/uyGy4zUAaI1R+zkn6kq50BQlHUw2v2niLbOTk/WAcIHtAyQLkUVMIUKIjQ2rZ1MWDxqRCaS5jiB+WSXzvYVmF+gOE3o2LVJP44Kmehu+1ROGDvJaxxKLrC3dFhOkol5YTizam2x4wugzhHR51zgtwM0Xgvj4GyfQk2AVbP/llVO6C4efiYAFZErDp/tjATjnnok7jrJGsRxMpCGCY0YclnFSPUZw6HWZjodw+q1UsEAxos6DdcNf5HBpEYuDNU23GglRPfvJm7dKXt2og22jI38tA0f8HvZNHLW1jsd/hCA56+EsRg4R6CRo3YMNR8yyV/PUQ2qdQfYtJah7kI=" # BINTRAY_API_KEY
+      install:
+      - curl -o $HOME/.m2/settings.xml https://gist.githubusercontent.com/cryptobot/cf5fbd909c4782aaeeeb7c7f4a1a43da/raw/e60ee486e34ee0c79f89f947abe2c83b4290c6bb/settings.xml
       deploy:
       - provider: script
         script: mvn -fJNI/pom.xml clean versions:set -DnewVersion=${TRAVIS_TAG} deploy -DskipTests -Prelease
