@@ -21,12 +21,12 @@ jobs:
       name: "Windows"
       os: windows
       language: cpp
-      env:
-        global:
-          - JAVA_HOME="C:\Program Files\OpenJDK\jdk-11.0.2"
       install:
         - choco install openjdk --version 11.0.2.01
         - choco install maven --version 3.6.1 --ignore-dependencies
+        - export JAVA_HOME="/c/Program Files/OpenJDK/jdk-11.0.2"
+        - java -version
+        - mvn -version
       script:
         - mvn -fJNI/pom.xml clean install -Dorg.slf4j.simpleLogger.log.org.apache.maven.cli.transfer.Slf4jMavenTransferListener=WARN
 #    - stage: foo
