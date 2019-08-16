@@ -26,7 +26,6 @@ jobs:
         - choco install maven --version 3.6.1 --ignore-dependencies
         - export JAVA_HOME="/c/Program Files/OpenJDK/jdk-11.0.2"
         - export PATH=$PATH:"/c/Program Files/OpenJDK/jdk-11.0.2/bin":"/c/ProgramData/chocolatey/bin"
-        - java -version
         - mvn -version
       script:
         - mvn -fJNI/pom.xml clean install -Dorg.slf4j.simpleLogger.log.org.apache.maven.cli.transfer.Slf4jMavenTransferListener=WARN
