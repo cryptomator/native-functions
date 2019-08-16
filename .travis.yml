@@ -24,7 +24,8 @@ jobs:
       install:
         - choco install openjdk --version 11.0.2.01
         - choco install maven --version 3.6.1 --ignore-dependencies
-        - call RefreshEnv.cmd
+        - export JAVA_HOME="/c/Program Files/OpenJDK/jdk-11.0.2"
+        - export PATH=$PATH:"/c/Program Files/OpenJDK/jdk-11.0.2/bin":"/c/ProgramData/chocolatey/bin"
         - java -version
         - mvn -version
       script:
