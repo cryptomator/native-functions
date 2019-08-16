@@ -11,14 +11,14 @@ jobs:
 #      dist: xenial
 #      jdk: openjdk11
 #      sudo: false
-#    - stage: test
-#      name: "macOS"
-#      os: osx
-#      osx_image: xcode10.1
-#      script:
-#        - mvn -fJNI/pom.xml clean install -Dorg.slf4j.simpleLogger.log.org.apache.maven.cli.transfer.Slf4jMavenTransferListener=WARN
     - stage: test
-      name: "Windows"
+      name: "macFunctions.dylib"
+      os: osx
+      osx_image: xcode10.1
+      script:
+        - mvn -fJNI/pom.xml clean install
+    - stage: test
+      name: "winFunctions.dll"
       os: windows
       language: cpp
       install:
@@ -28,7 +28,7 @@ jobs:
         - export PATH=$PATH:"/c/Program Files/OpenJDK/jdk-11.0.2/bin":"/c/ProgramData/chocolatey/bin"
         - mvn -version
       script:
-        - mvn -fJNI/pom.xml clean install -Dorg.slf4j.simpleLogger.log.org.apache.maven.cli.transfer.Slf4jMavenTransferListener=WARN
+        - mvn -fJNI/pom.xml clean install
 #    - stage: foo
 #      name: "Foo"
 #      script: echo "foo"
