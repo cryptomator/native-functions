@@ -198,7 +198,7 @@
 										<argument>libMacFunctions</argument>
 										<argument>clean</argument>
 										<argument>archive</argument>
-										<argument>USER_HEADER_SEARCH_PATHS="$(inherited) ${java.home}/include"</argument>
+										<argument>USER_HEADER_SEARCH_PATHS="${java.home}/include/**"</argument>
 									</arguments>
 								</configuration>
 							</execution>
