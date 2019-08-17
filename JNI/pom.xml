@@ -197,6 +197,7 @@
 										<argument>Release</argument>
 										<argument>-archivePath</argument>
 										<argument>libMacFunctions</argument>
+										<argument>-quiet</argument>
 										<argument>clean</argument>
 										<argument>archive</argument>
 										<argument>USER_HEADER_SEARCH_PATHS="${java.home}/include/**"</argument>
