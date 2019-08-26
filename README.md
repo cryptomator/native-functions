@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/cryptomator/native-functions.svg?branch=develop)](https://travis-ci.org/cryptomator/native-functions)
+
 # Cryptomator's Foreign Function Interface
 
 This library contains both the Java part as well as the native libraries required to fulfill certain functionality that isn't available directly from Java.
