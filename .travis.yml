@@ -5,18 +5,22 @@ cache:
 jobs:
   fast_finish: true
   include:
-#    - stage: test
-#      name: "Linux"
-#      os: linux
-#      dist: xenial
-#      jdk: openjdk11
-#      sudo: false
     - stage: test
       name: "macFunctions.dylib"
       os: osx
       osx_image: xcode10.1
       script:
         - mvn -fJNI/pom.xml clean install
+      deploy:
+      - provider: releases
+        api_key:
+          secure: YPhVZsb7ksQO1MRvlgMZAL29aHEI6tadKveOSxwVE+k6FIY75a1PDQMkkrG1ahO5ISw2WBKUHzxKFmK0ZwjYpTEZVbuC7J4Bjoius3jmC7nO9mA23Uo+exKP7/rFOjMKP3Du7TLMWlQF7+oAFoRvLxcXGM7TYDr0qPzur81eMMWqHFSOObDYpkZcT5TO8STFtbTM42pxEfRlUhpscxZcJsNZQye+t7WWo7RaX5N0Z/BkQ46AMHZERGFRVCC9tmJX7SiwdAwSGDlC0JooEkl69oOBoLpRWldjVI2s7HgDFN4R+Xzn7GRb1XF9u4JnikwXWkH0rcKMVbLYj/JoF/4fEXFLwFMNLdWn+RONsvCbkFtP5R3RdIijwvKT75bS4P55+vyNL7eCmp+WgFUbLMdkIDQlOFIc6LkmCyqbps+d2XXkTc9pMgsBzw2BBzRWwPf4XVkG63Hf/KINjoEaY9wVY4in59OKyYnEKD/jU6B3lRP+2PibfVKgEkIkfldPT03TMWg41/IS7kennW0+y9A26YkI945kr5V6G9lY52CmyLbUbxjv6S3Je1bCiOkTfJYvVbQkcLo1bbqHy99nGGLtbG3NQXc28Mp0HVRbXiAhwa3EVfkh2nMPpi4ZAqcfMA7S12J0Rq2/SwL2zqnSgsSh/xt7WKhFvX2eSTFDBsO6R94=
+        file: "MacFunctions/libMacFunctions.xcarchive/Products/usr/local/lib/libMacFunctions.dylib"
+        draft: true
+        on:
+          repo: cryptomator/native-functions
+          tags: true
+
     - stage: test
       name: "winFunctions.dll"
       os: windows
@@ -29,9 +33,16 @@ jobs:
         - mvn -version
       script:
         - mvn -fJNI/pom.xml clean install
-#    - stage: foo
-#      name: "Foo"
-#      script: echo "foo"
+      deploy:
+      - provider: releases
+        api_key:
+          secure: YPhVZsb7ksQO1MRvlgMZAL29aHEI6tadKveOSxwVE+k6FIY75a1PDQMkkrG1ahO5ISw2WBKUHzxKFmK0ZwjYpTEZVbuC7J4Bjoius3jmC7nO9mA23Uo+exKP7/rFOjMKP3Du7TLMWlQF7+oAFoRvLxcXGM7TYDr0qPzur81eMMWqHFSOObDYpkZcT5TO8STFtbTM42pxEfRlUhpscxZcJsNZQye+t7WWo7RaX5N0Z/BkQ46AMHZERGFRVCC9tmJX7SiwdAwSGDlC0JooEkl69oOBoLpRWldjVI2s7HgDFN4R+Xzn7GRb1XF9u4JnikwXWkH0rcKMVbLYj/JoF/4fEXFLwFMNLdWn+RONsvCbkFtP5R3RdIijwvKT75bS4P55+vyNL7eCmp+WgFUbLMdkIDQlOFIc6LkmCyqbps+d2XXkTc9pMgsBzw2BBzRWwPf4XVkG63Hf/KINjoEaY9wVY4in59OKyYnEKD/jU6B3lRP+2PibfVKgEkIkfldPT03TMWg41/IS7kennW0+y9A26YkI945kr5V6G9lY52CmyLbUbxjv6S3Je1bCiOkTfJYvVbQkcLo1bbqHy99nGGLtbG3NQXc28Mp0HVRbXiAhwa3EVfkh2nMPpi4ZAqcfMA7S12J0Rq2/SwL2zqnSgsSh/xt7WKhFvX2eSTFDBsO6R94=
+        file: "WinFunctions/winFunctions.dll"
+        draft: true
+        on:
+          repo: cryptomator/native-functions
+          tags: true
+
     - stage: deploy
       name: "Deploy"
       os: linux
