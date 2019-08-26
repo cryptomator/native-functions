@@ -18,7 +18,9 @@ JNIEXPORT jstring JNICALL Java_org_cryptomator_jni_MacApplicationUiAppearance_ge
 }
 
 JNIEXPORT void JNICALL Java_org_cryptomator_jni_MacApplicationUiAppearance_setToAqua0(JNIEnv *env, jobject thisObj) {
-	NSApp.appearance = [NSAppearance appearanceNamed:NSAppearanceNameAqua];
+	if (@available(macOS 10.14, *)) {
+		NSApp.appearance = [NSAppearance appearanceNamed:NSAppearanceNameAqua];
+	}
 }
 
 JNIEXPORT jboolean JNICALL Java_org_cryptomator_jni_MacApplicationUiAppearance_setToDarkAqua0(JNIEnv *env, jobject thisObj) {
