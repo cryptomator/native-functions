@@ -1,20 +1,2 @@
-*.class
-
-# Package Files #
-*.jar
-*.war
-*.ear
-
-# Eclipse Settings Files #
-.settings
-.project
-.classpath
-target/
-test-output/
-
-# IntelliJ Settings Files #
-.idea/
-out/
-.idea_modules/
-*.iml
-*.iws
+# Mac Build Output #
+*.xcarchive/

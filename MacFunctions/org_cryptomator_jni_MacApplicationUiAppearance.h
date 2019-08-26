@@ -9,6 +9,14 @@ extern "C" {
 #endif
 /*
  * Class:     org_cryptomator_jni_MacApplicationUiAppearance
+ * Method:    getCurrentInterfaceStyle0
+ * Signature: ()Ljava/lang/String;
+ */
+JNIEXPORT jstring JNICALL Java_org_cryptomator_jni_MacApplicationUiAppearance_getCurrentInterfaceStyle0
+  (JNIEnv *, jobject);
+
+/*
+ * Class:     org_cryptomator_jni_MacApplicationUiAppearance
  * Method:    setToAqua0
  * Signature: ()V
  */
@@ -22,6 +30,14 @@ JNIEXPORT void JNICALL Java_org_cryptomator_jni_MacApplicationUiAppearance_setTo
  */
 JNIEXPORT jboolean JNICALL Java_org_cryptomator_jni_MacApplicationUiAppearance_setToDarkAqua0
   (JNIEnv *, jobject);
+
+/*
+ * Class:     org_cryptomator_jni_MacApplicationUiAppearance
+ * Method:    addListener0
+ * Signature: (Lorg/cryptomator/jni/MacApplicationUiInterfaceThemeListener;)V
+ */
+JNIEXPORT void JNICALL Java_org_cryptomator_jni_MacApplicationUiAppearance_addListener0
+  (JNIEnv *, jobject, jobject);
 
 #ifdef __cplusplus
 }

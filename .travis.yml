@@ -1,32 +1,66 @@
-dist: xenial
-language: java
-sudo: false
-jdk:
-- openjdk11
-env:
-  global:
-  - secure: "bSndg671YCDiXKKVf0pLw46ZX8wlyU1eD/CuSLtPu6yFPumG8Mi0oKckh+ZyojZbGvvCFGzgdaVIwKUysGl5y4ZHlv79pAcgQU5f0610SbTL5haxwKSu2PZORU2yHpjVSx9TcGCipygHRW/uQAzctmYMR/fzHVfCivfECpQh3Ism5WQpSVDOjhxh2wN8NSVYhjtJ9c1m6YQPR3JL6kDvh5un26T/DlHRGIVjz26bZVWZlnBxF13BFYhqrY+uq6C4Cx40NpjGwTboCp/wAvvqMTznnYSES6K+B5iRXwSTyY6UVfWtZz8YGdfMrWPuHuC+Odb818dClGyzLKIzGoC+CyHv/uyGy4zUAaI1R+zkn6kq50BQlHUw2v2niLbOTk/WAcIHtAyQLkUVMIUKIjQ2rZ1MWDxqRCaS5jiB+WSXzvYVmF+gOE3o2LVJP44Kmehu+1ROGDvJaxxKLrC3dFhOkol5YTizam2x4wugzhHR51zgtwM0Xgvj4GyfQk2AVbP/llVO6C4efiYAFZErDp/tjATjnnok7jrJGsRxMpCGCY0YclnFSPUZw6HWZjodw+q1UsEAxos6DdcNf5HBpEYuDNU23GglRPfvJm7dKXt2og22jI38tA0f8HvZNHLW1jsd/hCA56+EsRg4R6CRo3YMNR8yyV/PUQ2qdQfYtJah7kI=" # BINTRAY_API_KEY
-install:
-- curl -o $HOME/.m2/settings.xml https://gist.githubusercontent.com/cryptobot/cf5fbd909c4782aaeeeb7c7f4a1a43da/raw/e60ee486e34ee0c79f89f947abe2c83b4290c6bb/settings.xml
-- mvn -fJNI/pom.xml dependency:go-offline -Prelease
-script:
-- mvn -fJNI/pom.xml clean install
 cache:
   directories:
   - $HOME/.m2
-deploy:
-- provider: script # SNAPSHOTS
-  script: mvn -fJNI/pom.xml clean deploy -DskipTests -Prelease
-  skip_cleanup: true
-  on:
-    repo: cryptomator/native-functions
-    branch: develop
-    condition: $TRAVIS_TAG = ''
-- provider: script # RELEASES
-  script: mvn -fJNI/pom.xml clean versions:set -DnewVersion=${TRAVIS_TAG} deploy -DskipTests -Prelease
-  skip_cleanup: true
-  on:
-    repo: cryptomator/native-functions
-    tags: true
-after_deploy:
-  - "echo '{\"close\": \"1\"}' | curl --max-time 10 -X POST -u cryptobot:${BINTRAY_API_KEY} https://api.bintray.com/maven_central_sync/cryptomator/maven/jni/versions/${TRAVIS_TAG}"
+  
+jobs:
+  fast_finish: true
+  include:
+    - stage: test
+      name: "macFunctions.dylib"
+      os: osx
+      osx_image: xcode10.1
+      script:
+        - mvn -fJNI/pom.xml clean install
+      deploy:
+      - provider: releases
+        api_key:
+          secure: YPhVZsb7ksQO1MRvlgMZAL29aHEI6tadKveOSxwVE+k6FIY75a1PDQMkkrG1ahO5ISw2WBKUHzxKFmK0ZwjYpTEZVbuC7J4Bjoius3jmC7nO9mA23Uo+exKP7/rFOjMKP3Du7TLMWlQF7+oAFoRvLxcXGM7TYDr0qPzur81eMMWqHFSOObDYpkZcT5TO8STFtbTM42pxEfRlUhpscxZcJsNZQye+t7WWo7RaX5N0Z/BkQ46AMHZERGFRVCC9tmJX7SiwdAwSGDlC0JooEkl69oOBoLpRWldjVI2s7HgDFN4R+Xzn7GRb1XF9u4JnikwXWkH0rcKMVbLYj/JoF/4fEXFLwFMNLdWn+RONsvCbkFtP5R3RdIijwvKT75bS4P55+vyNL7eCmp+WgFUbLMdkIDQlOFIc6LkmCyqbps+d2XXkTc9pMgsBzw2BBzRWwPf4XVkG63Hf/KINjoEaY9wVY4in59OKyYnEKD/jU6B3lRP+2PibfVKgEkIkfldPT03TMWg41/IS7kennW0+y9A26YkI945kr5V6G9lY52CmyLbUbxjv6S3Je1bCiOkTfJYvVbQkcLo1bbqHy99nGGLtbG3NQXc28Mp0HVRbXiAhwa3EVfkh2nMPpi4ZAqcfMA7S12J0Rq2/SwL2zqnSgsSh/xt7WKhFvX2eSTFDBsO6R94=
+        file: "MacFunctions/libMacFunctions.xcarchive/Products/usr/local/lib/libMacFunctions.dylib"
+        skip_cleanup: true
+        draft: true
+        on:
+          repo: cryptomator/native-functions
+          tags: true
+
+    - stage: test
+      name: "winFunctions.dll"
+      os: windows
+      language: cpp
+      install:
+        - choco install openjdk --version 11.0.2.01
+        - choco install maven --version 3.6.1 --ignore-dependencies
+        - export JAVA_HOME="/c/Program Files/OpenJDK/jdk-11.0.2"
+        - export PATH=$PATH:"/c/Program Files/OpenJDK/jdk-11.0.2/bin":"/c/ProgramData/chocolatey/bin"
+        - mvn -version
+      script:
+        - mvn -fJNI/pom.xml clean install
+      deploy:
+      - provider: releases
+        api_key:
+          secure: YPhVZsb7ksQO1MRvlgMZAL29aHEI6tadKveOSxwVE+k6FIY75a1PDQMkkrG1ahO5ISw2WBKUHzxKFmK0ZwjYpTEZVbuC7J4Bjoius3jmC7nO9mA23Uo+exKP7/rFOjMKP3Du7TLMWlQF7+oAFoRvLxcXGM7TYDr0qPzur81eMMWqHFSOObDYpkZcT5TO8STFtbTM42pxEfRlUhpscxZcJsNZQye+t7WWo7RaX5N0Z/BkQ46AMHZERGFRVCC9tmJX7SiwdAwSGDlC0JooEkl69oOBoLpRWldjVI2s7HgDFN4R+Xzn7GRb1XF9u4JnikwXWkH0rcKMVbLYj/JoF/4fEXFLwFMNLdWn+RONsvCbkFtP5R3RdIijwvKT75bS4P55+vyNL7eCmp+WgFUbLMdkIDQlOFIc6LkmCyqbps+d2XXkTc9pMgsBzw2BBzRWwPf4XVkG63Hf/KINjoEaY9wVY4in59OKyYnEKD/jU6B3lRP+2PibfVKgEkIkfldPT03TMWg41/IS7kennW0+y9A26YkI945kr5V6G9lY52CmyLbUbxjv6S3Je1bCiOkTfJYvVbQkcLo1bbqHy99nGGLtbG3NQXc28Mp0HVRbXiAhwa3EVfkh2nMPpi4ZAqcfMA7S12J0Rq2/SwL2zqnSgsSh/xt7WKhFvX2eSTFDBsO6R94=
+        file: "WinFunctions/winFunctions.dll"
+        skip_cleanup: true
+        draft: true
+        on:
+          repo: cryptomator/native-functions
+          tags: true
+
+    - stage: deploy
+      name: "Deploy"
+      os: linux
+      dist: xenial
+      language: java
+      jdk: openjdk11
+      sudo: false
+      if: |
+        tag IS present AND \
+        repo = cryptomator/native-functions
+      env:
+      - secure: "bSndg671YCDiXKKVf0pLw46ZX8wlyU1eD/CuSLtPu6yFPumG8Mi0oKckh+ZyojZbGvvCFGzgdaVIwKUysGl5y4ZHlv79pAcgQU5f0610SbTL5haxwKSu2PZORU2yHpjVSx9TcGCipygHRW/uQAzctmYMR/fzHVfCivfECpQh3Ism5WQpSVDOjhxh2wN8NSVYhjtJ9c1m6YQPR3JL6kDvh5un26T/DlHRGIVjz26bZVWZlnBxF13BFYhqrY+uq6C4Cx40NpjGwTboCp/wAvvqMTznnYSES6K+B5iRXwSTyY6UVfWtZz8YGdfMrWPuHuC+Odb818dClGyzLKIzGoC+CyHv/uyGy4zUAaI1R+zkn6kq50BQlHUw2v2niLbOTk/WAcIHtAyQLkUVMIUKIjQ2rZ1MWDxqRCaS5jiB+WSXzvYVmF+gOE3o2LVJP44Kmehu+1ROGDvJaxxKLrC3dFhOkol5YTizam2x4wugzhHR51zgtwM0Xgvj4GyfQk2AVbP/llVO6C4efiYAFZErDp/tjATjnnok7jrJGsRxMpCGCY0YclnFSPUZw6HWZjodw+q1UsEAxos6DdcNf5HBpEYuDNU23GglRPfvJm7dKXt2og22jI38tA0f8HvZNHLW1jsd/hCA56+EsRg4R6CRo3YMNR8yyV/PUQ2qdQfYtJah7kI=" # BINTRAY_API_KEY
+      install:
+        - curl -o $HOME/.m2/settings.xml https://gist.githubusercontent.com/cryptobot/cf5fbd909c4782aaeeeb7c7f4a1a43da/raw/e60ee486e34ee0c79f89f947abe2c83b4290c6bb/settings.xml
+      script:
+        - mvn -fJNI/pom.xml versions:set -DnewVersion=${TRAVIS_TAG}
+        - mvn -fJNI/pom.xml clean deploy -DskipTests -Prelease
+      after_success:
+        - "echo '{\"close\": \"1\"}' | curl --max-time 10 -X POST -u cryptobot:${BINTRAY_API_KEY} https://api.bintray.com/maven_central_sync/cryptomator/maven/jni/versions/${TRAVIS_TAG}"

@@ -8,30 +8,27 @@
  *******************************************************************************/
 package org.cryptomator.jni;
 
-import org.apache.commons.lang3.SystemUtils;
-import org.junit.Assert;
-import org.junit.Ignore;
-import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.condition.EnabledOnOs;
+import org.junit.jupiter.api.condition.OS;
 
+@EnabledOnOs(OS.WINDOWS)
 public class WinDataProtectionTest {
 
-	@Ignore
 	@Test
 	public void testDataProtection() {
-		if (!SystemUtils.IS_OS_WINDOWS) {
-			Assert.fail();
-		}
-		WinDataProtection dataProtection = DaggerJniTestComponent.create().winFunctions().get().dataProtection();
+		WinDataProtection dataProtection = JniFunctions.winFunctions().get().dataProtection();
 
 		String storedPw = "h€llo wørld123";
 		byte[] ciphertext = dataProtection.protect(storedPw.getBytes(), "salt".getBytes());
-		Assert.assertNotNull(ciphertext);
+		Assertions.assertNotNull(ciphertext);
 
 		byte[] shouldBeNull = dataProtection.unprotect(ciphertext, "pepper".getBytes());
-		Assert.assertNull(shouldBeNull);
+		Assertions.assertNull(shouldBeNull);
 
 		byte[] cleartext = dataProtection.unprotect(ciphertext, "salt".getBytes());
-		Assert.assertArrayEquals(storedPw.getBytes(), cleartext);
+		Assertions.assertArrayEquals(storedPw.getBytes(), cleartext);
 	}
 
 }

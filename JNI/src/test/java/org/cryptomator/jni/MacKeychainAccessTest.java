@@ -8,32 +8,29 @@
  *******************************************************************************/
 package org.cryptomator.jni;
 
-import org.apache.commons.lang3.SystemUtils;
-import org.junit.Assert;
-import org.junit.Ignore;
-import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.condition.EnabledOnOs;
+import org.junit.jupiter.api.condition.OS;
 
+@EnabledOnOs(OS.MAC)
 public class MacKeychainAccessTest {
 
-	@Ignore
 	@Test
 	public void testKeychainAccess() {
-		if (!SystemUtils.IS_OS_MAC_OSX) {
-			Assert.fail();
-		}
-		MacKeychainAccess keychain = DaggerJniTestComponent.create().macFunctions().get().keychainAccess();
+		MacKeychainAccess keychain = JniFunctions.macFunctions().get().keychainAccess();
 
 		String storedPw = "h€llo wørld123";
 		keychain.storePassword("foo", storedPw);
 		char[] loadedPw2 = keychain.loadPassword("bar");
-		Assert.assertNull(loadedPw2);
+		Assertions.assertNull(loadedPw2);
 
 		char[] loadedPw = keychain.loadPassword("foo");
-		Assert.assertArrayEquals(storedPw.toCharArray(), loadedPw);
+		Assertions.assertArrayEquals(storedPw.toCharArray(), loadedPw);
 
 		keychain.deletePassword("foo");
 		char[] deletedPw = keychain.loadPassword("foo");
-		Assert.assertNull(deletedPw);
+		Assertions.assertNull(deletedPw);
 	}
 
 }
