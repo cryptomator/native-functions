@@ -11,9 +11,17 @@
 
 JNIEXPORT jboolean JNICALL Java_org_cryptomator_jni_MacApplicationUiState_transformToForegroundApplication0(JNIEnv *env, jobject thisObj) {
 	[NSApp activateIgnoringOtherApps:YES];
-	return [NSApp setActivationPolicy:NSApplicationActivationPolicyRegular];
+	if ([NSApp activationPolicy] == NSApplicationActivationPolicyRegular) {
+		return YES;
+	} else {
+		return [NSApp setActivationPolicy:NSApplicationActivationPolicyRegular];
+	}
 }
 
 JNIEXPORT jboolean JNICALL Java_org_cryptomator_jni_MacApplicationUiState_transformToAgentApplication0(JNIEnv *env, jobject thisObj) {
-	return [NSApp setActivationPolicy:NSApplicationActivationPolicyAccessory];
+	if ([NSApp activationPolicy] == NSApplicationActivationPolicyAccessory) {
+		return YES;
+	} else {
+		return [NSApp setActivationPolicy:NSApplicationActivationPolicyAccessory];
+	}
 }
