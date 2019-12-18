@@ -15,6 +15,7 @@ public class MacFunctions {
 	private final MacApplicationUiAppearance uiAppearance = new MacApplicationUiAppearance();
 	private final MacApplicationUiState uiState = new MacApplicationUiState();
 	private final MacKeychainAccess keychainAccess = new MacKeychainAccess();
+	private final MacLaunchServices launchServices = new MacLaunchServices();
 
 	MacFunctions() {}
 
@@ -28,6 +29,10 @@ public class MacFunctions {
 
 	public MacKeychainAccess keychainAccess() {
 		return keychainAccess;
+	}
+
+	public MacLaunchServices launchServices() {
+		return launchServices;
 	}
 
 }
