@@ -23,6 +23,7 @@ JNIEXPORT jboolean JNICALL Java_org_cryptomator_jni_MacLaunchServices_isLoginIte
 				NSString *resolvedApplicationPath = [(__bridge NSURL *)applicationPathURL path];
 				CFRelease(applicationPathURL);
 				if ([resolvedApplicationPath compare:applicationPath] == NSOrderedSame) {
+					CFRelease(sharedFileList);
 					return YES;
 				}
 			}
