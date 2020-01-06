@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		743FEF9023A7D20E003A0722 /* org_cryptomator_jni_MacLaunchServices.h in Headers */ = {isa = PBXBuildFile; fileRef = 743FEF8F23A7D20E003A0722 /* org_cryptomator_jni_MacLaunchServices.h */; };
+		743FEF9223A7D245003A0722 /* org_cryptomator_jni_MacLaunchServices.m in Sources */ = {isa = PBXBuildFile; fileRef = 743FEF9123A7D245003A0722 /* org_cryptomator_jni_MacLaunchServices.m */; };
 		74A247B42306FDB900BFA9FC /* SKYAppearanceNotifier.h in Headers */ = {isa = PBXBuildFile; fileRef = 74A247B22306FDB900BFA9FC /* SKYAppearanceNotifier.h */; };
 		74A247B52306FDB900BFA9FC /* SKYAppearanceNotifier.m in Sources */ = {isa = PBXBuildFile; fileRef = 74A247B32306FDB900BFA9FC /* SKYAppearanceNotifier.m */; };
 		74A247BC2306FE5C00BFA9FC /* SKYAppearanceObserver.h in Headers */ = {isa = PBXBuildFile; fileRef = 74A247BA2306FE5C00BFA9FC /* SKYAppearanceObserver.h */; };
@@ -20,6 +22,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		743FEF8F23A7D20E003A0722 /* org_cryptomator_jni_MacLaunchServices.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = org_cryptomator_jni_MacLaunchServices.h; sourceTree = "<group>"; };
+		743FEF9123A7D245003A0722 /* org_cryptomator_jni_MacLaunchServices.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = org_cryptomator_jni_MacLaunchServices.m; sourceTree = "<group>"; };
 		74A247B22306FDB900BFA9FC /* SKYAppearanceNotifier.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SKYAppearanceNotifier.h; sourceTree = "<group>"; };
 		74A247B32306FDB900BFA9FC /* SKYAppearanceNotifier.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SKYAppearanceNotifier.m; sourceTree = "<group>"; };
 		74A247BA2306FE5C00BFA9FC /* SKYAppearanceObserver.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SKYAppearanceObserver.h; sourceTree = "<group>"; };
@@ -53,6 +57,8 @@
 				9E0819C61D75CABC000C89E6 /* org_cryptomator_jni_MacApplicationUiState.m */,
 				9E0819C31D75CA69000C89E6 /* org_cryptomator_jni_MacKeychainAccess.h */,
 				9E0819C71D75CABC000C89E6 /* org_cryptomator_jni_MacKeychainAccess.m */,
+				743FEF8F23A7D20E003A0722 /* org_cryptomator_jni_MacLaunchServices.h */,
+				743FEF9123A7D245003A0722 /* org_cryptomator_jni_MacLaunchServices.m */,
 				74A247B22306FDB900BFA9FC /* SKYAppearanceNotifier.h */,
 				74A247B32306FDB900BFA9FC /* SKYAppearanceNotifier.m */,
 				74A247BA2306FE5C00BFA9FC /* SKYAppearanceObserver.h */,
@@ -81,6 +87,7 @@
 				74DA953222E9D94800D7D8CA /* org_cryptomator_jni_MacApplicationUiAppearance.h in Headers */,
 				9E0819C51D75CA69000C89E6 /* org_cryptomator_jni_MacKeychainAccess.h in Headers */,
 				9E0819C41D75CA69000C89E6 /* org_cryptomator_jni_MacApplicationUiState.h in Headers */,
+				743FEF9023A7D20E003A0722 /* org_cryptomator_jni_MacLaunchServices.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -143,6 +150,7 @@
 			files = (
 				9E0819C91D75CABC000C89E6 /* org_cryptomator_jni_MacKeychainAccess.m in Sources */,
 				74A247BD2306FE5C00BFA9FC /* SKYAppearanceObserver.m in Sources */,
+				743FEF9223A7D245003A0722 /* org_cryptomator_jni_MacLaunchServices.m in Sources */,
 				74A247B52306FDB900BFA9FC /* SKYAppearanceNotifier.m in Sources */,
 				74DA953422E9DA1000D7D8CA /* org_cryptomator_jni_MacApplicationUiAppearance.m in Sources */,
 				9E0819C81D75CABC000C89E6 /* org_cryptomator_jni_MacApplicationUiState.m in Sources */,
@@ -200,7 +208,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				HEADER_SEARCH_PATHS = "/Library/Java/JavaVirtualMachines/jdk-11.0.2.jdk/Contents/Home/include/**";
+				HEADER_SEARCH_PATHS = "/Library/Java/JavaVirtualMachines/adoptopenjdk-11.jdk/Contents/Home/include/**";
 				MACOSX_DEPLOYMENT_TARGET = 10.11;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -250,7 +258,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				HEADER_SEARCH_PATHS = "/Library/Java/JavaVirtualMachines/jdk-11.0.2.jdk/Contents/Home/include/**";
+				HEADER_SEARCH_PATHS = "/Library/Java/JavaVirtualMachines/adoptopenjdk-11.jdk/Contents/Home/include/**";
 				MACOSX_DEPLOYMENT_TARGET = 10.11;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = macosx;
