@@ -9,14 +9,16 @@
 #import "SKYAppearanceObserver.h"
 
 @interface SKYAppearanceObserver ()
-@property (nonatomic, assign) JavaVM *vm;
+@property (nonatomic, strong) NSString *identifier;
 @property (nonatomic, assign) jobject listener;
+@property (nonatomic, assign) JavaVM *vm;
 @end
 
 @implementation SKYAppearanceObserver
 
 - (instancetype)initWithListener:(jobject)listener vm:(JavaVM *)vm {
 	if (self = [super init]) {
+		self.identifier = [NSUUID UUID].UUIDString;
 		self.listener = listener;
 		self.vm = vm;
 	}

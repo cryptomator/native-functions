@@ -12,6 +12,9 @@
 
 @interface SKYAppearanceObserver : NSObject
 
+@property (nonatomic, readonly) NSString *identifier;
+@property (nonatomic, readonly) jobject listener;
+
 - (instancetype)initWithListener:(jobject)listener vm:(JavaVM *)vm NS_DESIGNATED_INITIALIZER;
 - (instancetype)init NS_UNAVAILABLE;
 - (void)interfaceThemeChangedNotification:(NSNotification *)notification;

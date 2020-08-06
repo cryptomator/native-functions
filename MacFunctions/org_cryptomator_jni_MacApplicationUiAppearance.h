@@ -34,10 +34,18 @@ JNIEXPORT jboolean JNICALL Java_org_cryptomator_jni_MacApplicationUiAppearance_s
 /*
  * Class:     org_cryptomator_jni_MacApplicationUiAppearance
  * Method:    addListener0
- * Signature: (Lorg/cryptomator/jni/MacApplicationUiInterfaceThemeListener;)V
+ * Signature: (Lorg/cryptomator/jni/MacApplicationUiInterfaceThemeListener;)Ljava/lang/String;
  */
-JNIEXPORT void JNICALL Java_org_cryptomator_jni_MacApplicationUiAppearance_addListener0
+JNIEXPORT jstring JNICALL Java_org_cryptomator_jni_MacApplicationUiAppearance_addListener0
   (JNIEnv *, jobject, jobject);
+
+/*
+ * Class:     org_cryptomator_jni_MacApplicationUiAppearance
+ * Method:    removeListener0
+ * Signature: (Ljava/lang/String;)V
+ */
+JNIEXPORT void JNICALL Java_org_cryptomator_jni_MacApplicationUiAppearance_removeListener0
+  (JNIEnv *, jobject, jstring);
 
 #ifdef __cplusplus
 }
