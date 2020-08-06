@@ -31,9 +31,21 @@
 	return self;
 }
 
+- (SKYAppearanceObserver *)observerWithIdentifier:(NSString *)identifier {
+	NSUInteger indexOfObserver = [self.observers indexOfObjectPassingTest:^BOOL(SKYAppearanceObserver *observer, NSUInteger idx, BOOL *stop) {
+		return [observer.identifier isEqualToString:identifier];
+	}];
+	return indexOfObserver != NSNotFound ? self.observers[indexOfObserver] : nil;
+}
+
 - (void)addObserver:(SKYAppearanceObserver *)observer {
 	[self.observers addObject:observer];
-	[NSDistributedNotificationCenter.defaultCenter addObserver:observer selector:@selector(interfaceThemeChangedNotification:) name:@"AppleInterfaceThemeChangedNotification" object:nil];
+	[[NSDistributedNotificationCenter defaultCenter] addObserver:observer selector:@selector(interfaceThemeChangedNotification:) name:@"AppleInterfaceThemeChangedNotification" object:nil];
+}
+
+- (void)removeObserver:(SKYAppearanceObserver *)observer {
+	[self.observers removeObject:observer];
+	[[NSDistributedNotificationCenter defaultCenter] removeObserver:observer];
 }
 
 @end

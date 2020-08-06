@@ -32,11 +32,32 @@ JNIEXPORT jboolean JNICALL Java_org_cryptomator_jni_MacApplicationUiAppearance_s
 	}
 }
 
-JNIEXPORT void JNICALL Java_org_cryptomator_jni_MacApplicationUiAppearance_addListener0(JNIEnv *env, jobject thisObj, jobject listenerObj) {
+JNIEXPORT jstring JNICALL Java_org_cryptomator_jni_MacApplicationUiAppearance_addListener0(JNIEnv *env, jobject thisObj, jobject listenerObj) {
 	JavaVM *vm = NULL;
-	if ((*env)->GetJavaVM(env, &vm) == JNI_OK) {
-		jobject listener = (*env)->NewGlobalRef(env, listenerObj);
-		SKYAppearanceObserver *observer = [[SKYAppearanceObserver alloc] initWithListener:listener vm:vm];
-		[SKYAppearanceNotifier.sharedInstance addObserver:observer];
+	if ((*env)->GetJavaVM(env, &vm) != JNI_OK) {
+		return NULL;
 	}
+	jobject listener = (*env)->NewGlobalRef(env, listenerObj);
+	if (listener == NULL) {
+		return NULL;
+	}
+	SKYAppearanceObserver *observer = [[SKYAppearanceObserver alloc] initWithListener:listener vm:vm];
+	[SKYAppearanceNotifier.sharedInstance addObserver:observer];
+	return (*env)->NewStringUTF(env, [observer.identifier cStringUsingEncoding:NSUTF8StringEncoding]);
+}
+
+JNIEXPORT void JNICALL Java_org_cryptomator_jni_MacApplicationUiAppearance_removeListener0(JNIEnv *env, jobject thisObj, jstring identifierStr) {
+	const jchar *identifierChars = (*env)->GetStringChars(env, identifierStr, NULL);
+	if (identifierChars == NULL) {
+		return;
+	}
+	const jsize identifierLen = (*env)->GetStringLength(env, identifierStr);
+	NSString *identifier = [NSString stringWithCharacters:identifierChars length:identifierLen];
+	(*env)->ReleaseStringChars(env, identifierStr, identifierChars);
+	SKYAppearanceObserver *observer = [SKYAppearanceNotifier.sharedInstance observerWithIdentifier:identifier];
+	if (!observer) {
+		return;
+	}
+	(*env)->DeleteGlobalRef(env, observer.listener);
+	[SKYAppearanceNotifier.sharedInstance removeObserver:observer];
 }

@@ -13,6 +13,8 @@
 @interface SKYAppearanceNotifier : NSObject
 
 + (instancetype)sharedInstance;
+- (SKYAppearanceObserver *)observerWithIdentifier:(NSString *)identifier;
 - (void)addObserver:(SKYAppearanceObserver *)observer;
+- (void)removeObserver:(SKYAppearanceObserver *)observer;
 
 @end

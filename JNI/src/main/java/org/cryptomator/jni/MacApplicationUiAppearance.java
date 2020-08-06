@@ -54,10 +54,16 @@ public class MacApplicationUiAppearance {
 	 *
 	 * @param listener The listener to register
 	 */
-	public void addListener(MacApplicationUiInterfaceThemeListener listener) {
-		addListener0(listener);
+	public String addListener(MacApplicationUiInterfaceThemeListener listener) {
+		return addListener0(listener);
 	}
 
-	private native void addListener0(MacApplicationUiInterfaceThemeListener listener);
+	private native String addListener0(MacApplicationUiInterfaceThemeListener listener);
+
+	public void removeListener(String identifier) {
+		removeListener0(identifier);
+	}
+
+	private native void removeListener0(String identifier);
 
 }

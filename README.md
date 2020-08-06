@@ -17,7 +17,6 @@ This library contains both the Java part as well as the native libraries require
 
 Navigate to the JNI directory and run `mvn clean install`.
 
-
 # Building on macOS
 
 ## Requirements
@@ -30,3 +29,11 @@ Navigate to the JNI directory and run `mvn clean install`.
 ## Building
 
 Navigate to the JNI directory and run `mvn clean install`.
+
+## Generate Header File
+
+Navigate to the JNI directory and run:
+
+```sh
+javac -cp JNI/target/classes -h MacFunctions JNI/src/main/java/org/cryptomator/jni/Mac*.java
+```
